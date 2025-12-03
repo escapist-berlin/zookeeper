@@ -1,5 +1,3 @@
-import java.util.Scanner
-
 const val camel = """Switching on the camera in the camel habitat...
  ___.-''''-.
 /___  @    |
@@ -115,15 +113,19 @@ const val rabbit = """Switching on the camera in the rabbit habitat...
 (" ~----( ~   Y.  )
 It looks like we will soon have more rabbits!"""
 
+val animals = arrayOf(camel, lion, deer, goose, bat, rabbit)
+
 fun main() {
-    val animals: List<String> = listOf(camel, lion, deer, goose, bat, rabbit)
-    val scanner = Scanner(System.`in`)
+    while (true) {
+        print("Please enter the number of the habitat you would like to view: ")
+        val input = readln()
 
-    print("Please enter the number of the habitat you would like to view: ")
-    val habitatNumber = scanner.nextInt()
-    val animal = animals[habitatNumber]
+        if (input == "exit") {
+            println("See you later!")
+            break
+        }
 
-    println(animal.trimIndent())
-    println("---")
-    println("You've reached the end of the program. To check another habitat, please restart the watcher.")
+        val habitatNumber = input.toInt()
+        println(animals[habitatNumber].trimIndent())
+    }
 }
